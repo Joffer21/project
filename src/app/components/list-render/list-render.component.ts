@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Animal } from 'src/app/Animal';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-list-render',
@@ -6,15 +8,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-render.component.css']
 })
 export class ListRenderComponent {
-  animals = [
-    {name: 'Tuca', type: 'Dog'},
-    {name: 'Tom', type: 'Cat'},
-    {name: 'Frida', type: 'Dog'},
-    {name: 'Bob', type: 'Horse'},
-  ];
+  animals: Animal [] = [];
 
-  constructor() {}
+  animalDetails = '';
+
+  constructor(private listService: ListService) {
+    this.getAnimals()
+  }
 
   ngOnInit(): void {}
+
+  showAge(animal: Animal): void {
+    this.animalDetails = `O animal ${animal.name} tem ${animal.age} anos!`
+  }
+
+  removeAnimal(animal: Animal) {
+    console.log('Removendo animal...')
+    this.animals = this.listService.remove(this.animals, animal);
+  }
+
+  getAnimals(): void {
+    this.listService.getAll().subscribe((animals) => (this.animals = animals));
+  }
 
 }

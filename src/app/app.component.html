@@ -1,13 +1,13 @@
+<p>header</p>
+
+<nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/list">List</a>
+    <a routerLink="/pipes">Pipe</a>
+    <a routerLink="/directives">Directives</a>
+</nav>
+
 <h1>Hello Word!!! Angular</h1>
-<h2>tesntando o h2!!!</h2>
-<p>Alguma coisa...</p>
-<div>
-    <a href="#">Clique aqui</a>
-</div>
-<app-first-component></app-first-component>
-<app-parent-data [name] = "userName" [userData] = "userData"></app-parent-data>
-<app-directives></app-directives>
-<app-if-render></app-if-render>
-<app-events></app-events>
-<app-emitter></app-emitter>
-<app-list-render></app-list-render>
+<router-outlet></router-outlet>
+
+<p>footer</p>
